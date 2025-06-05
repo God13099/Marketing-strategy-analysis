@@ -8,18 +8,25 @@ To remain competitive, especially during a 90-day shopping festival, the company
 Yogurt is highly price-sensitive, so finding the right minimum discount level is essential — low enough to maintain margins, but high enough to attract purchases. Excessive discounting can harm profitability or train customers to wait for sales.
 This issue belongs to strategic pricing and promotion planning and focuses on how discount decisions affect sales and profit.The key challenge is to define a discount strategy that maximizes profit over the promotion period by accounting for customer responsiveness to prices and promotion dynamics.
 ### Problem Description
-The company aims to determine the optimal minimum daily discount d_min to apply during a 90-day
-mandatory shopping festival, where competitors also offer promotional pricing. The goal is to
-maximize the total profit over the campaign.
+The company aims to determine the optimal minimum daily discount d_min to apply during a 90-day mandatory shopping festival, where competitors also offer promotional pricing. The goal is to maximize the total profit over the campaign.
 The core decision variable is:
 • d_min ∈ [0.01, 0.4] – the minimum discount level allowed.
 Discounts beyond 40% reduce the product price below cost (5 PLN × (1 – 0.4) = 3 PLN), making the sale unprofitable.
 Mathematical Representation:
-The objective is to maximize total profit:
-Profitt = (pricet + reward) ⋅ 𝑞" − cost ⋅ demandt − holding_costt
+![image](https://github.com/user-attachments/assets/cc97e3c1-309b-4817-8f78-414a3ba7083a)
 Where:
-• pricet = base_price × (1 − 𝑑")
-• 𝑞" is the quantity sold, based on an exponential demand model with elasticity:
-𝑞" ∼ PoissonBbase_demand ⋅ 𝑒#(%!&'.))D
-The discount level is dynamically updated based on sales using a logistic function:
-<img width="105" alt="image" src="https://github.com/user-attachments/assets/03e5f6c0-3d38-4686-9d8c-885ff59aedf0" />
+![image](https://github.com/user-attachments/assets/a55085db-610f-43f4-a0d6-821a3e91a5c3)
+Simulation Logic:
+• On each day t ∈ [1, 90], demand is simulated using a price-sensitive exponential demand function.
+• Sales are limited by available inventory.
+• If units remain unsold, holding costs are incurred and next day’s demand is reduced.
+• The discount level d_t is updated dynamically using a logistic function based on current sales.
+### Analysis Results
+#### Overview
+<img width="256" alt="image" src="https://github.com/user-attachments/assets/5bfb9b41-542b-404f-ad25-d13c71d7806e" />
+Figure 4.1.1 Profit vs. Minimum Discount Level (d_min)
+The Figure 4.1.1 shows a clear nonlinear relationship:
+	•	Profit increases with moderate discounts and peaks at d_min = 0.123, yielding a maximum profit of 13,558.84 PLN.
+	•	Beyond this point, higher discounts reduce profit due to lower margins.
+	•	Importantly, profit remains within 95% of the maximum when d_min lies between 0.106 and 0.18, offering a range of flexible yet effective pricing strategies.
+![image](https://github.com/user-attachments/assets/8cd73659-8a84-41a0-8b42-f2fb8bde2597)
