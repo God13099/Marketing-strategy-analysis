@@ -1,2 +1,2 @@
 # Marketing-strategy-analysis
-Discount-Based Promotion Strategy Optimization
+## Discount-Based Promotion Strategy Optimization
